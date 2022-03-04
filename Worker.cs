@@ -19,11 +19,18 @@ namespace WorkerDoble
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _logger.LogInformation("O serviço está iniciando.");
+
+            stoppingToken.Register(() => _logger.LogInformation("Tarefa de segundo plano está parando."));
+
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
+                _logger.LogInformation("Executando tarefa: {time}", DateTimeOffset.Now);
+                await Task.Delay(10000, stoppingToken);
             }
+
+            _logger.LogInformation("O serviço está parando.");
         }
+
     }
 }
