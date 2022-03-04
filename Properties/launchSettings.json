@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "WorkerDoble": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
